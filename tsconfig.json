@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+      "target": "es6"
+      , "module": "commonjs"
+      , "outDir": "dist"
+      , "declaration": true
+      , "sourceMap": true
+      , "noLib": false
+      , "allowJs": true
+
+      , "noEmitOnError": true
+      , "noUnusedLocals": true
+      , "noImplicitReturns": true
+      , "noFallthroughCasesInSwitch": true
+      , "strictNullChecks": true
+  
+      , "noImplicitAny": false
+      , "noUnusedParameters": false
+      , "noImplicitThis": false
+      , "traceResolution": false
+    }
+    , "exclude": [
+        "node_modules/"
+      , "dist/"
+    ]
+    , "include": [
+         "*.ts"
+    ]
+  }
+  

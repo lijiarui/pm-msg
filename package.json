@@ -1,0 +1,23 @@
+{
+  "name": "test",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "pm2 delete all && pm2 flush",
+    "demo": "ts-node control.ts && pm2 log",
+    "say": "ts-node say.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^8.0.47",
+    "express": "^4.16.2",
+    "neat-query": "^0.0.4",
+    "pm2": "^2.7.2",
+    "ts-node": "^3.3.0",
+    "typescript": "^2.5.3"
+  }
+}
