@@ -4,7 +4,7 @@ let option = {
   id:   0,
   type: 'bot:msg',
   data: {
-    msg: 'send message: Hi, what is your name?'
+    msg: 'send message: Hi, what is your name?',
   },
   topic: 'login'
 }

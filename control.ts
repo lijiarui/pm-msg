@@ -8,10 +8,11 @@ pm2.connect(function (err) {
   }
 
   pm2.start({
-    script:             'script.ts',    // Script to be run
-    exec_mode:          'fork',         // Allows your app to be clustered
-    name:               'script',       // Optional: Pm2 name
-    max_memory_restart: '100M'          // Optional: Restarts your app if it reaches 100M
+    script:             'script.ts',    
+    exec_mode:          'cluster',  
+    instances:          2,    
+    name:               'script',       
+    max_memory_restart: '100M'          
   }, function (err, apps) {
     if (apps[0].pm2_env.pm_id !== undefined) {
       console.log(`start pm2 successfully! pm_id: ${apps[0].pm2_env.pm_id}`)
