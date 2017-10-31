@@ -15,12 +15,12 @@ pm2.connect(function () {
     console.log(option)
     console.log('send the following message successfully!')
   })
-})
 
-
-pm2.launchBus(function (err, pm2_bus) {
-  pm2_bus.on('bot:msg', function (packet) {
-    console.log('get response:')
-    console.log(packet)
+  pm2.launchBus(function (err, pm2_bus) {
+    pm2_bus.on('bot:msg', function (packet) {
+      console.log('get response:')
+      console.log(packet)
+      pm2.disconnect()
+    })
   })
 })
