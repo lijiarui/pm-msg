@@ -7,6 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "pm2 delete all && pm2 flush",
     "demo": "ts-node control.ts && pm2 log",
+    "kill": "ts-node kill.ts",
     "say": "ts-node say.ts"
   },
   "keywords": [],

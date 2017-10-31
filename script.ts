@@ -22,6 +22,7 @@ process.on('message', function (packet) {
   ; (process as any).send(response)
 })
 
+// listen kill event
 process.on('SIGTERM', function(){
   pm2.killDaemon(function(err) {
     if(err) throw err
