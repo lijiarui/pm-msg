@@ -1,13 +1,13 @@
 {
     "compilerOptions": {
-      "target": "es6"
+      "target": "es2016"
       , "module": "commonjs"
+      , "moduleResolution": "node"
       , "outDir": "dist"
       , "declaration": true
       , "sourceMap": true
       , "noLib": false
-      , "allowJs": true
-
+  
       , "noEmitOnError": true
       , "noUnusedLocals": true
       , "noImplicitReturns": true
@@ -24,7 +24,7 @@
       , "dist/"
     ]
     , "include": [
-         "*.ts"
+         "src/pm-msg.ts"
     ]
   }
   

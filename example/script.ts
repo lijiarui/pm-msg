@@ -7,7 +7,7 @@ app.listen(3100, () => {
 })
 
 const response = {
-  type: 'bot:msg',
+  type: 'msg',
   data: {
     success: true,
     msg: 'response: My name is Alice'
@@ -20,11 +20,4 @@ process.on('message', function (packet) {
   console.log('begin to response the followng data')
   console.log(response)
   ; (process as any).send(response)
-})
-
-// listen kill event
-process.on('SIGTERM', function(){
-  pm2.killDaemon(function(err) {
-    if(err) throw err
-  })
 })

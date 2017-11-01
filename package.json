@@ -1,24 +1,42 @@
 {
-  "name": "pm2-sendMsg",
+  "name": "pm2-msg",
+  "author": "Jiarui Li <ruiruibupt@126.com> (http://blog.botorange.com)",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "description": "send message to PM2 process, start, delete, sendMsg",
+  "main": "dist/pm-msg.js",
+  "types": "dist/pm-msg.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "clean": "pm2 delete all && pm2 flush",
-    "demo": "ts-node control.ts && pm2 log",
-    "kill": "ts-node kill.ts",
-    "say": "ts-node say.ts"
+    "clean": "shx rm -fr dist/*",
+    "dist": "npm run clean && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": [
+    "pm2",
+    "process",
+    "message"
+  ],
   "license": "ISC",
   "dependencies": {
     "@types/node": "^8.0.47",
-    "express": "^4.16.2",
-    "neat-query": "^0.0.4",
+    "brolog": "^1.2.8",
     "pm2": "^2.7.2",
+    "time-limit-promise": "^1.0.2",
     "ts-node": "^3.3.0",
     "typescript": "^2.5.3"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lijiarui/pm2-msg.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lijiarui/pm2-msg/issues"
+  },
+  "homepage": "https://github.com/lijiarui/pm2-msg#readme",
+  "files": [
+    "src/pm-msg.ts",
+    "README.md",
+    "package.json",
+    "dist/",
+    "ts-config.json"
+  ]
 }
