@@ -1,5 +1,5 @@
-const pm2 = require('pm2')
 import Brolog from 'brolog'
+const pm2 = require('pm2')
 const timeLimit = require('time-limit-promise')
 const log = new Brolog()
 const TIMEOUT = 60 * 1000
