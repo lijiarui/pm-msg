@@ -52,6 +52,10 @@ export interface neatPmObj {
   pm_id:  number, 
 }
 
+/**
+ * main
+ * @class pmMsg
+ */
 export class pmMsg {
 
   public static MSGLISTEN = 'msg' 
