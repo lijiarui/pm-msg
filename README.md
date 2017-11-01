@@ -1,5 +1,8 @@
 # pm-msg
-send message to PM2 process, start, delete, sendMsg
+send message to PM2 process, start, delete, sendMsg by pm2 api using typescript.
+
+When start a pm2 process by name, will check if the name exist, if exist, will delete it then start.    
+When kill a pm2 process by name, will check if it exsit, also will check if it is killed successfully.
 
 ## INSTALL
 ```
@@ -39,7 +42,8 @@ let option = {
 pmMsg.send('script', option)
 ```
 
-## TIPS
+## DOC
+see more [doc](https://github.com/lijiarui/pm-msg/tree/master/docs/index.md)
 ### disconnect
 The following function will disconnect automatically after done
 * start

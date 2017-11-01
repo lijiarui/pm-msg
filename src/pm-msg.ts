@@ -56,6 +56,14 @@ export class pmMsg {
 
   public static MSGLISTEN = 'msg' 
 
+  /**
+   * 
+   * Same with `pm2.connect()`
+   * @static
+   * @returns {Promise<void>} none
+   * @example
+   * await pmMsg.connect()
+   */
   public static async connect(): Promise<void> {
     return new Promise<void>((resolve) => {
       pm2.connect(function (err) {
@@ -68,10 +76,25 @@ export class pmMsg {
     })
   }
 
+  /**
+   * 
+   * Same with `pm2.disconnect()`
+   * @static
+   * @example
+   * pmMsg.disconnect()
+   */
   public static disconnect(): void {
     pm2.disconnect()
   }
 
+  /**
+   * 
+   * Same with `pm2.list` Gets the list of running processes being managed by pm2.
+   * @static
+   * @returns {Promise} return object array pmObj[]
+   * @example
+   * await pmMsg.pmList()
+   */
   public static async pmList(): Promise <pmObj[]> {
     return new Promise<pmObj[]>((resolve, reject) => {
       pm2.list((err, data) => {
@@ -83,6 +106,15 @@ export class pmMsg {
     })
   }
 
+  /**
+   * 
+   * Check if exist the named process.
+   * @static
+   * @param {string} name 
+   * @returns {Promise<boolean>} true for exsit, false for no name exsit in pm2 list.
+   * @example
+   * await pmMsg.pmNameExsit('script') // check if has a process named with script
+   */
   public static async pmNameExsit(name: string): Promise<boolean> {
     const list = await pmMsg.pmList()
     for (let i in list) {
@@ -93,6 +125,22 @@ export class pmMsg {
     return false
   }
 
+  /**
+   * 
+   * Starts a script that will be managed by pm2.   
+   * Only support `cluster` mode   
+   * Will check if the script name exist, if exist, will delete first, then start the process
+   * @static
+   * @param {processObj} opt 
+   * @example
+   * const option = {
+   *   script:             './example/script.ts',    
+   *   instances:          2,    
+   *   name:               'script',       
+   *   max_memory_restart: '100M'          
+   * }
+   * pmMsg.start(option)
+   */
   public static async start(opt: processObj) {
     return new Promise(async (resolve, reject) => {
       opt['exec_mode'] = 'cluster'
@@ -125,10 +173,23 @@ export class pmMsg {
     })
   }
 
-  // Just send to on process instead of send message to all process named with `name`
-  // will disconnect when send over
-  // will return undefined if cannot get the result
-  public static async send(name: string, content: sendObj): Promise<processResObj> {
+  /**
+   * 
+   * Send message to process managed by pm2.    
+   * Just send to one process instead of send message to all process named with `name`.
+   * Will auto disconnect when send over.
+   * Return undefined if cannot get the result
+   * @static
+   * @param {string} name 
+   * @param {sendObj} content 
+   * @returns {Promise<processResObj | undefined>} 
+   * @example
+   * pmMsg.send('script', {
+   *   data: { msg: 'send message: Hi, what is your name?' },
+   *   topic: 'login'
+   * })
+   */
+  public static async send(name: string, content: sendObj): Promise<processResObj | undefined> {
     return new Promise<processResObj>(async (resolve, reject) => {
       pm2.launchBus(function (err, pm2_bus) {
         timeLimit(pmMsg.receive(pm2_bus), TIMEOUT).then(res => {
@@ -155,7 +216,14 @@ export class pmMsg {
     })
   }
 
-  // just find one process by name, if many, return the first one.
+  /**
+   * 
+   * Find one process by name, if many, return the first one.
+   * Should disconnect when done.
+   * @static
+   * @param {any} name 
+   * @returns {(Promise<pmObj | null>)} 
+   */
   public static async getProcess(name): Promise<pmObj | null> {
     const list = await pmMsg.pmList()
     for (let i in list) {
@@ -167,6 +235,9 @@ export class pmMsg {
     return null
   }
 
+  /**
+   * @private
+   */
   public static async receive(pm2_bus) {
     return new Promise((resolve, reject) => {
       pm2_bus.on(pmMsg.MSGLISTEN, function (packet) {
@@ -176,6 +247,15 @@ export class pmMsg {
     })
   }
 
+  /**
+   * 
+   * Stops the process and removes it from pm2’s list. 
+   * Same with `pm2.delete()`
+   * Will check whethe delete the process successfully. If delete successfully, return true, else, return false.
+   * @static
+   * @param {string} name 
+   * @returns {Promise<boolean>} 
+   */
   public static async kill(name: string): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
       pm2.delete(name, async (err) => {
@@ -195,6 +275,9 @@ export class pmMsg {
     })
   }
 
+  /**
+   * @private
+   */
   public static async killRaw(name: string): Promise<boolean> {
     return new Promise<boolean>((resolve, reject) => {
       pm2.delete(name, async (err) => {

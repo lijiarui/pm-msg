@@ -8,7 +8,8 @@
   "scripts": {
     "clean": "shx rm -fr dist/*",
     "dist": "npm run clean && tsc",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "doc": "npm run dist && echo '# pm-msg v'$(jq -r .version package.json)' Documentation\n' > docs/index.md && jsdoc2md dist/pm-msg.js >> docs/index.md"
   },
   "keywords": [
     "pm2",
@@ -19,6 +20,7 @@
   "dependencies": {
     "@types/node": "^8.0.47",
     "brolog": "^1.2.8",
+    "jsdoc-to-markdown": "^3.0.0",
     "pm2": "^2.7.2",
     "time-limit-promise": "^1.0.2",
     "ts-node": "^3.3.0",
