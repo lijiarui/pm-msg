@@ -1,4 +1,4 @@
-# pm2-sendMsg
+# pm-msg
 PM2 sendDataToProcessId
 
 ## RUN
