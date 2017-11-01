@@ -1,7 +1,7 @@
 {
   "name": "pm-msg",
   "author": "Jiarui Li <ruiruibupt@126.com> (http://blog.botorange.com)",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "send message to PM2 process, start, delete, sendMsg",
   "main": "dist/pm-msg.js",
   "types": "dist/pm-msg.d.ts",
