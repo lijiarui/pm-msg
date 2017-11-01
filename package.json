@@ -1,5 +1,5 @@
 {
-  "name": "pm2-msg",
+  "name": "pm-msg",
   "author": "Jiarui Li <ruiruibupt@126.com> (http://blog.botorange.com)",
   "version": "1.0.0",
   "description": "send message to PM2 process, start, delete, sendMsg",
@@ -26,12 +26,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lijiarui/pm2-msg.git"
+    "url": "git+https://github.com/lijiarui/pm-msg.git"
   },
   "bugs": {
-    "url": "https://github.com/lijiarui/pm2-msg/issues"
+    "url": "https://github.com/lijiarui/pm-msg/issues"
   },
-  "homepage": "https://github.com/lijiarui/pm2-msg#readme",
+  "homepage": "https://github.com/lijiarui/pm-msg#readme",
   "files": [
     "src/pm-msg.ts",
     "README.md",
