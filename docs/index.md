@@ -1,4 +1,4 @@
-# pm-msg v1.0.1 Documentation
+# pm-msg v1.0.2 Documentation
 
 <a name="pmMsg"></a>
 
